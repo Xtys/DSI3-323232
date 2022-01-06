@@ -12,20 +12,33 @@
 - Kaggle Submission
 - Conclusions
 
+###  Background
+We are a group of real estate analysts. Our project, would consist the Ames housing data to create a regression model that can predict the property price and provide suitable insights to management and potential buyers of the organization's real estate.
+
 ### Problem Statement
 
-### Who we are?
-A group of real estate analysts in Iowa that works for a private real estate institution 
+**What our plan are**
 
-### The real problem
-As real estate analysts in Iowa, we are responsible for managing our organization's real estate holdings.
+There are many variables that can determine how much a home can be priced at.
 
-We are tasked with understanding real estate market trends and to minimize current and future real estate holding risks.
+Using the Ames dataset, we want to determine which variables is affecting home saleprices the most and produce accurate saleprice predictions.
 
-We will be conducting data analysis on the Iowa real estate market and determine which are the factors that affects property prices.
+**What type of models will we be looking at?**
 
-The purpose of this analysis is to better understand a property price and provide suitable insights to management and potential buyers of the organization's real estate.
+We will be focusing on supervised machine learning models. Linear, Lasso and Ridge Regression are areas we will be exploring.
 
+
+**How will success be concluded?**
+
+Our main focus is optimising 𝑅2 and RMSE for the different models. Our aim is to create a model that significantly outperforms the baseline model which we've identified.
+
+**Is this the scope of the project appropriate? Who are our important stakeholders and why is this important to investigate?**
+
+With our procedure mention above, models we have would provide insights for potential home-buyers, housing owners and our origanization stakeholders.
+
+As real estate analysts in Iowa, we are responsible for managing our private real estate organization's real estate holdings.Thus, we are tasked with understanding real estate market trends and to minimize current and future real estate holding risks.
+
+---
 
 This studies is on what feature is most correlated to saleprice for the house in Iowa.
 ---
@@ -64,18 +77,56 @@ Here are some of the features:
 |**saleprice**|*int*|*train*|Price property was sold at
 
 ---
+
+### Methodology
+
+**EDA and Data Cleaning**
+
+Our train dataset has a total of 81 columns. 
+After rename feature to lowercase and _ names which are easier to work with. we dealt with smaller missing values variables.
+
+**Addressing Missing values**
+
+After which imputing missing values in qualitative features. Lot Frontage, Basement, Garage and filling up the rest with None.
+
+Followed by checking null value correction. 
+
+**Ordinal vs Catergorical**
+
+I decided to tackle the project from another point of view, where I consider oridinal variables as a ranking thus I did not include One-hot encoding. 
+
+Similar steps will be applied for our test dataset.
+---
 ### Data Analysis
+Pairplot of top correlation coefficient values
 ![image.png](https://i.postimg.cc/zDpjvbVc/Untitlwqeed.png)
 ![image.png](https://i.postimg.cc/GhFbvRnV/Untitled.png)
+
+lastly, dealing with outlier (Taking a closer look at gr_liv_area, total_bsmt_sf, 1st_flr_sf
+, these property are indeed the outliers hence choosing to remove them) and exporting to csv format.
+
 ---
 ### Modelling
+
 ![image.png](https://i.postimg.cc/kG5WKsBh/Untit3led.png)
----
+
+### Baseline Score ###
+My baseline score is base on Ridge Regression
+RMSE: 22939
+R2: 0.93
+
+### --- 
+
 ### Kaggle score = 1595743.51
+
 ### Conclusions & recommendations
-In order to have a model that predict the price of house accurate first we will need to clean up our data with the help of EDA, where we will be looking at data  imputation of the null values, convertion of discrete, continous, ordinal and nominal values in variables, identifying which are the outlier. Adding in features engineering , followed by modelling our data modified. 
- 
-Some recommendations:
-- lasso is suited the best for the housing price prediction.
-- Highest R2 score = 0.9451
-- Most suitable to be used at the same district or city area.
+According to my model, Mas_vnr_area, total sf and bsmtfin_sf_1 has the highest coefficient of the model. This would impact our sale price as for example, every one change of Mas_Vnr_area coefficient it will affect the sales price by 7000. These are my top 3 highest coefficient that affect my propeties prices, and thus when we recommend to our housing owners we suggest that they focus on bsmtfin_sf_1 as all houses are allocated a fixed plot of land which cannot be increase easily. However, the 3rd highest coefficient would be bsmtfin_sf_1, according to my model we would recommend our housing owner to complete their basement before selling as this can greatly impact the propeties price of their houses. 
+
+Through our model, we find that many of our clients who we have recommended to finishing their basement. They have sold their propeties at higher prices which inturn reflect more sale revenue for our organization in the past year. 
+
+Future steps to improve the model:
+According to my Feature Engineering, my RMSE score was not very good although I feel that some future possible steps to take that would improve my current model would be: One-hot encoding the Ordinal & Categorical variables.
+
+Further elaborate, by One-Hot encoding all the Categorical Data, the model could have gotten a much better RMSE Score. Instead of changing categorical data to ordinal data which resulted in RMSE score of 22939.
+
+
