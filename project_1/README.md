@@ -50,7 +50,7 @@ This studies is on relationship of SAT participation rate vs Median household in
 * [`sat_2019_ca.csv`](./data/sat_2019_ca.csv): 2019 SAT Scores in California by School
 
 #### Additional Data
-* [`sat_2019.csv`](./data/household_income_county.csv): Median Household income data
+* [`household_income_county.csv`](./data/household_income_county.csv): Median Household income data
 ([source](https://www.census.gov/search-results.html?q=california+median+income&page=1&stateGeo=none&searchtype=web&cssp=SERP&_charset_=UTF-8))
 
 ---
